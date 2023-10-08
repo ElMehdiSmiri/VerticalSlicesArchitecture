@@ -1,4 +1,4 @@
-# Application Name: C# Starter Kit
+# Vertical Slices Architecture: C# Starter Kit
 
 ## Overview
 
