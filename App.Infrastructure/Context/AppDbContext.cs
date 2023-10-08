@@ -1,12 +1,14 @@
 ﻿using App.Domain.Entities;
+using App.Infrastructure.Common.Extensions;
 using App.Infrastructure.EntitiesConfiguration;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace App.Infrastructure.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : BaseDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) : base(options, mediator)
         {
         }
 

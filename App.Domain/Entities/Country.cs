@@ -1,4 +1,5 @@
 ﻿using App.Domain.Common;
+using App.Domain.Events;
 using Dawn;
 
 namespace App.Domain.Entities
@@ -44,6 +45,8 @@ namespace App.Domain.Entities
                 throw new ArgumentException($"A city with the name {city.Name} already exist in {Name}");
 
             Cities.Add(city);
+
+            AddDomainEvent(new CityAdded(city));
         }
 
         public void RemoveCity(City city)
