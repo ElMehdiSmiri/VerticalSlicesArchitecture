@@ -39,21 +39,5 @@ namespace App.Infrastructure.Common.Extensions
             foreach (var domainEvent in domainEvents)
                 await _mediator.Publish(domainEvent);
         }
-
-        private async Task DispatchDomainEvents()
-        {
-            var domainEventEntities = ChangeTracker.Entries<BaseEntity>()
-                .Select(po => po.Entity)
-                .Where(po => po.DomainEvents.Any())
-                .ToArray();
-
-            foreach (var entity in domainEventEntities)
-            {
-                var events = entity.DomainEvents.ToArray();
-                entity.ClearDomainEvents();
-                foreach (var entityDomainEvent in events)
-                    await _mediator.Publish(entityDomainEvent);
-            }
-        }
     }
 }
