@@ -8,6 +8,10 @@ namespace App.Infrastructure.Context
 {
     public class AppDbContext : BaseDbContext
     {
+        protected AppDbContext()
+        {
+        }
+
         public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) : base(options, mediator)
         {
         }
