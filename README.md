@@ -108,7 +108,7 @@ For a complete list of dependencies and their versions, please refer to the `*.c
 
 ## Contributing
 
-We welcome contributions to make the C# Starter Kit even better! If you'd like to contribute, please follow these guidelines:
+Contributions are welcome. If you'd like to contribute, please follow these guidelines:
 
 1. Fork the repository and create a feature branch.
 2. Make your changes and ensure that all tests pass.
