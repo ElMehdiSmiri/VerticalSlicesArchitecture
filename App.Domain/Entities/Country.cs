@@ -6,10 +6,10 @@ namespace App.Domain.Entities
 {
     public class Country : BaseEntity
     {
-        public string Name { get; set; } = default!;
-        public string Language { get; set; } = default!;
-        public int Population { get; set; }
-        public virtual ICollection<City> Cities { get; set; } = new List<City>();
+        public string Name { get; private set; } = default!;
+        public string Language { get; private set; } = default!;
+        public int Population { get; private set; }
+        public virtual ICollection<City> Cities { get; private set; } = new List<City>();
 
         public Country(string name, string language, int population)
         {

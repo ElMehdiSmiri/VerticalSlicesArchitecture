@@ -5,10 +5,10 @@ namespace App.Domain.Entities
 {
     public class City : BaseEntity
     {
-        public string Name { get; set; } = default!;
-        public int Population { get; set; }
-        public Guid CountryId { get; set; }
-        public virtual Country Country { get; set; } = default!;
+        public string Name { get; private set; } = default!;
+        public int Population { get; private set; }
+        public Guid CountryId { get; private set; }
+        public virtual Country Country { get; private set; } = default!;
 
         protected City() { }
 
