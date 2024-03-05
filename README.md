@@ -2,7 +2,7 @@
 
 ## Overview
 
-This application serves as a comprehensive starting point for your C# development projects. It is built using C# 7 and incorporates several important architectural patterns and libraries, including MediatR, Vertical Slices Architecture, Domain-Driven Design (DDD), Logging, Domain Events, and Validation with Fluent Validation. This README provides an overview of the application structure, features, and how to get started with your development journey.
+This application serves as a comprehensive starting point for your C# development projects. It is built using C# 8 and incorporates several important architectural patterns and libraries, including MediatR, Vertical Slices Architecture, Domain-Driven Design (DDD), Logging, Domain Events, and Validation with Fluent Validation. This README provides an overview of the application structure, features, and how to get started with your development journey.
 
 ## Table of Contents
 
@@ -55,14 +55,14 @@ The C# Starter Kit uses SQL Entity Framework Code First to manage its database s
    }
 2. Apply Migrations: To create and apply the initial database schema, run the following commands:
   ```
-  cd App/Infrastructure
-  dotnet ef migrations add InitialMigration
-  dotnet ef database update
+  cd VerticalSlicesArchitecture
+  dotnet ef migrations add InitialMigration --project App.Infrastructure -s App.Api
+  dotnet ef database update --project App.Infrastructure -s App.Api
   ```
 3. Update the Database: Whenever you make changes to the domain models or data structures, create a new migration and apply it:
   ```
-  dotnet ef migrations add YourMigrationName
-  dotnet ef database update
+  dotnet ef migrations add YourMigrationName --project App.Infrastructure -s App.Api
+  dotnet ef database update --project App.Infrastructure -s App.Api
   ```
 ## Application Structure
 
