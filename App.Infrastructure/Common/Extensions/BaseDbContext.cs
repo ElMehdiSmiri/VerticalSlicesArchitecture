@@ -4,21 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Infrastructure.Common.Extensions
 {
-    public class BaseDbContext : DbContext
+    public abstract class BaseDbContext(DbContextOptions options, IMediator mediator) : DbContext(options)
     {
-        private readonly IMediator _mediator;
-
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        protected BaseDbContext()
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        {
-
-        }
-
-        public BaseDbContext(DbContextOptions options, IMediator mediator) : base(options)
-        {
-            _mediator = mediator;
-        }
+        private readonly IMediator _mediator = mediator;
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         {
@@ -34,7 +22,7 @@ namespace App.Infrastructure.Common.Extensions
 
             var entities = context.ChangeTracker
                 .Entries<BaseEntity>()
-                .Where(e => e.Entity.DomainEvents.Any())
+                .Where(e => e.Entity.DomainEvents.Count != 0)
                 .Select(e => e.Entity);
 
             var domainEvents = entities

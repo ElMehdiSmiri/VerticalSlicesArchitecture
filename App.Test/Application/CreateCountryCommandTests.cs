@@ -1,6 +1,8 @@
 ﻿using App.Application.Features.CountryFeatures.Commands;
 using App.Domain.Entities;
 using App.Infrastructure.Context;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 
 namespace App.Test.Application
@@ -11,7 +13,7 @@ namespace App.Test.Application
         public async Task Handle_ValidCommand_AddsCountryToDbContext()
         {
             // Arrange
-            var dbContextMock = new Mock<AppDbContext>();
+            var dbContextMock = new Mock<AppDbContext>(new DbContextOptions<AppDbContext>(), (new Mock<IMediator>()).Object);
             dbContextMock.Setup(db => db.Countries.Add(It.IsAny<Country>()));
 
             var handler = new CreateCountryCommandHandler(dbContextMock.Object);

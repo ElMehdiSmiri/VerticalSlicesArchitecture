@@ -6,16 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Infrastructure.Context
 {
-    public class AppDbContext : BaseDbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) 
+        : BaseDbContext(options, mediator)
     {
-        protected AppDbContext()
-        {
-        }
-
-        public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) : base(options, mediator)
-        {
-        }
-
         public virtual DbSet<Country> Countries => Set<Country>();
         public virtual DbSet<City> Cities => Set<City>();
 
